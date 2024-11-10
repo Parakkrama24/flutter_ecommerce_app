@@ -14,13 +14,11 @@ extension OnPressed on Widget {
             bottom: 0,
             child: TextButton(
                 style: ButtonStyle(
-                    shape: MaterialStateProperty.all(
+                    shape: WidgetStateProperty.all(
                   RoundedRectangleBorder(borderRadius: borderRadius),
                 )),
                 onPressed: () {
-                  if (onPressed != null) {
-                    onPressed();
-                  }
+                  onPressed();
                 },
                 child: Container()),
           )

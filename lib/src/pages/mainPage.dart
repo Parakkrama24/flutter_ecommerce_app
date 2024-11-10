@@ -8,9 +8,9 @@ import 'package:flutter_ecommerce_app/src/widgets/title_text.dart';
 import 'package:flutter_ecommerce_app/src/widgets/extentions.dart';
 
 class MainPage extends StatefulWidget {
-  MainPage({Key key, this.title}) : super(key: key);
-
   final String title;
+
+  const MainPage({Key? key, this.title = 'Default Title'}) : super(key: key);
 
   @override
   _MainPageState createState() => _MainPageState();
@@ -18,6 +18,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   bool isHomePageSelected = true;
+
   Widget _appBar() {
     return Container(
       padding: AppTheme.padding,
@@ -32,7 +33,7 @@ class _MainPageState extends State<MainPage> {
             borderRadius: BorderRadius.all(Radius.circular(13)),
             child: Container(
               decoration: BoxDecoration(
-                color: Theme.of(context).backgroundColor,
+                color: Theme.of(context).colorScheme.background,
                 boxShadow: <BoxShadow>[
                   BoxShadow(
                       color: Color(0xfff8f8f8),
@@ -42,7 +43,7 @@ class _MainPageState extends State<MainPage> {
               ),
               child: Image.asset("assets/user.png"),
             ),
-          ).ripple(() {}, borderRadius: BorderRadius.all(Radius.circular(13)))
+          ).ripple(() {}, borderRadius: BorderRadius.all(Radius.circular(13))),
         ],
       ),
     );
@@ -53,7 +54,7 @@ class _MainPageState extends State<MainPage> {
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(13)),
-          color: Theme.of(context).backgroundColor,
+          color: Theme.of(context).colorScheme.background,
           boxShadow: AppTheme.shadow),
       child: Icon(
         icon,
@@ -84,29 +85,23 @@ class _MainPageState extends State<MainPage> {
               ],
             ),
             Spacer(),
-            !isHomePageSelected
-                ? Container(
-                  padding: EdgeInsets.all(10),
-                  child: Icon(
-                      Icons.delete_outline,
-                      color: LightColor.orange,
-                    ),
-                ).ripple(() {}, borderRadius: BorderRadius.all(Radius.circular(13)))
-                : SizedBox()
+            if (!isHomePageSelected)
+              Container(
+                padding: EdgeInsets.all(10),
+                child: Icon(
+                  Icons.delete_outline,
+                  color: LightColor.orange,
+                ),
+              ).ripple(() {},
+                  borderRadius: BorderRadius.all(Radius.circular(13))),
           ],
         ));
   }
 
   void onBottomIconPressed(int index) {
-    if (index == 0 || index == 1) {
-      setState(() {
-        isHomePageSelected = true;
-      });
-    } else {
-      setState(() {
-        isHomePageSelected = false;
-      });
-    }
+    setState(() {
+      isHomePageSelected = (index == 0 || index == 1);
+    });
   }
 
   @override
@@ -140,13 +135,13 @@ class _MainPageState extends State<MainPage> {
                         switchInCurve: Curves.easeInToLinear,
                         switchOutCurve: Curves.easeOutBack,
                         child: isHomePageSelected
-                            ? MyHomePage()
+                            ? MyHomePage(title: "My Title")
                             : Align(
                                 alignment: Alignment.topCenter,
                                 child: ShoppingCartPage(),
                               ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -157,7 +152,7 @@ class _MainPageState extends State<MainPage> {
               child: CustomBottomNavigationBar(
                 onIconPresedCallback: onBottomIconPressed,
               ),
-            )
+            ),
           ],
         ),
       ),

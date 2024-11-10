@@ -1,7 +1,13 @@
-class Category{
-  int id ;
-  String name ;
-  String image ;
-  bool isSelected ;
-  Category({this.id,this.name,this.isSelected = false,this.image});
+class Category {
+  final int id;
+  final String name;
+  final String image;
+  bool isSelected;
+
+  Category({
+    required this.id,
+    required this.name,
+    required this.image,
+    this.isSelected = false,
+  });
 }

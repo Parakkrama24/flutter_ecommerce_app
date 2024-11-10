@@ -6,7 +6,7 @@ import 'package:flutter_ecommerce_app/src/themes/theme.dart';
 import 'package:flutter_ecommerce_app/src/widgets/title_text.dart';
 
 class ShoppingCartPage extends StatelessWidget {
-  const ShoppingCartPage({Key key}) : super(key: key);
+  const ShoppingCartPage({Key? key}) : super(key: key);
 
   Widget _cartItems() {
     return Column(children: AppData.cartList.map((x) => _item(x)).toList());
@@ -107,10 +107,10 @@ class ShoppingCartPage extends StatelessWidget {
     return TextButton(
       onPressed: () {},
       style: ButtonStyle(
-        shape: MaterialStateProperty.all(
+        shape: WidgetStateProperty.all(
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         ),
-        backgroundColor: MaterialStateProperty.all<Color>(LightColor.orange),
+        backgroundColor: WidgetStateProperty.all<Color>(LightColor.orange),
       ),
       child: Container(
         alignment: Alignment.center,

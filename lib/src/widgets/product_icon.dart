@@ -10,9 +10,11 @@ class ProductIcon extends StatelessWidget {
   // final String text;
   final ValueChanged<Category> onSelected;
   final Category model;
-  ProductIcon({Key key, this.model, this.onSelected}) : super(key: key);
+  ProductIcon({Key? key, required this.model, required this.onSelected})
+      : super(key: key);
 
   Widget build(BuildContext context) {
+    // ignore: unnecessary_null_comparison
     return model.id == null
         ? Container(width: 5)
         : Container(

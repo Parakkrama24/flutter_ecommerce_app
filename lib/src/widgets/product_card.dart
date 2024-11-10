@@ -8,7 +8,8 @@ import 'package:flutter_ecommerce_app/src/widgets/extentions.dart';
 class ProductCard extends StatelessWidget {
   final Product product;
   final ValueChanged<Product> onSelected;
-  ProductCard({Key key, this.product, this.onSelected}) : super(key: key);
+  ProductCard({Key? key, required this.product, required this.onSelected})
+      : super(key: key);
 
 //   @override
 //   _ProductCardState createState() => _ProductCardState();
@@ -43,9 +44,9 @@ class ProductCard extends StatelessWidget {
               top: 0,
               child: IconButton(
                 icon: Icon(
-                  product.isliked ? Icons.favorite : Icons.favorite_border,
+                  product.isLiked ? Icons.favorite : Icons.favorite_border,
                   color:
-                      product.isliked ? LightColor.red : LightColor.iconColor,
+                      product.isLiked ? LightColor.red : LightColor.iconColor,
                 ),
                 onPressed: () {},
               ),

@@ -1,19 +1,32 @@
 import 'package:flutter/material.dart';
-
 import 'light_color.dart';
 
 class AppTheme {
   const AppTheme();
+
   static ThemeData lightTheme = ThemeData(
-      backgroundColor: LightColor.background,
-      primaryColor: LightColor.background,
-      cardTheme: CardTheme(color: LightColor.background),
-      textTheme: TextTheme(bodyText1: TextStyle(color: LightColor.black)),
-      iconTheme: IconThemeData(color: LightColor.iconColor),
-      bottomAppBarColor: LightColor.background,
-      dividerColor: LightColor.lightGrey,
-      primaryTextTheme:
-          TextTheme(bodyText1: TextStyle(color: LightColor.titleTextColor)));
+    primaryColor: LightColor.background,
+    cardTheme: CardTheme(color: LightColor.background),
+    textTheme: TextTheme(bodyLarge: TextStyle(color: LightColor.black)),
+    iconTheme: IconThemeData(color: LightColor.iconColor),
+    dividerColor: LightColor.lightGrey,
+    primaryTextTheme:
+        TextTheme(bodyLarge: TextStyle(color: LightColor.titleTextColor)),
+    colorScheme: ColorScheme(
+      primary: LightColor.background, // Define primary color
+      secondary: LightColor.orange, // Define secondary color
+      background: LightColor.background,
+      surface: LightColor.lightGrey, // Light grey for surfaces
+      onPrimary: LightColor.black, // Text color on primary
+      onSecondary: LightColor.black, // Text color on secondary
+      onBackground: LightColor.black, // Text color on background
+      onSurface: LightColor.black, // Text color on surface
+      error: LightColor.red, // Error color
+      onError: LightColor.skyBlue, // Text color on error
+      brightness: Brightness.light, // Specify brightness
+    ),
+    bottomAppBarTheme: BottomAppBarTheme(color: LightColor.background),
+  );
 
   static TextStyle titleStyle =
       const TextStyle(color: LightColor.titleTextColor, fontSize: 16);
@@ -29,7 +42,7 @@ class AppTheme {
   static TextStyle h6Style = const TextStyle(fontSize: 14);
 
   static List<BoxShadow> shadow = <BoxShadow>[
-    BoxShadow(color: Color(0xfff8f8f8), blurRadius: 10, spreadRadius: 15),
+    BoxShadow(color: LightColor.lightGrey, blurRadius: 10, spreadRadius: 15),
   ];
 
   static EdgeInsets padding =

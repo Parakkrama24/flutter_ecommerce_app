@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'E-Commerce ',
+      title: 'E-Commerce',
       theme: AppTheme.lightTheme.copyWith(
         textTheme: GoogleFonts.mulishTextTheme(
           Theme.of(context).textTheme,
@@ -22,12 +22,17 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: Routes.getRoute(),
       onGenerateRoute: (RouteSettings settings) {
-        if (settings.name.contains('detail')) {
+        // Handle nullable 'name' property safely
+        if (settings.name?.contains('detail') ?? false) {
           return CustomRoute<bool>(
-              builder: (BuildContext context) => ProductDetailPage());
+            builder: (BuildContext context) => ProductDetailPage(),
+            settings: settings, // Pass settings here
+          );
         } else {
           return CustomRoute<bool>(
-              builder: (BuildContext context) => MainPage());
+            builder: (BuildContext context) => MainPage(),
+            settings: settings, // Pass settings here
+          );
         }
       },
       initialRoute: "MainPage",
